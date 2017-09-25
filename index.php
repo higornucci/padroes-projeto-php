@@ -103,3 +103,16 @@ $historico->adiciona($contrato->salvaEstado());
 echo $contrato->getTipo();
 $contrato->restaura($historico->pega(1));
 echo $contrato->getTipo();
+
+// Commands
+
+$pedido1 = new Pedido("Renan", 150.0);
+$pedido2 = new Pedido("Marcelo", 250.0);
+
+$fila = new FilaDeTrabalho();
+
+$fila->adiciona(new PagaPedido($pedido1));
+$fila->adiciona(new PagaPedido($pedido2));
+$fila->adiciona(new ConcluiPedido($pedido1));
+
+$fila->processa();
