@@ -69,3 +69,17 @@ foreach($itens as $item) {
 $impostos = $valorTotal * 0.05;
 
 $nf = new NotaFiscal("razao social qualquer", "um cnpj", date("Y-m-d h:i:s"), $valorTotal, $impostos, $itens, "observacoes quaisquer aqui");
+
+
+$builder = new NotaFiscalBuilder();
+$builder->adicionaAcao(new EnviadorDeEmail());
+$builder->adicionaAcao(new NotaFiscalDao());
+
+$notaFiscal = $builder->paraEmpresa("Caelum")
+    ->comCnpj("123.456.789/0001-10")
+    ->com(new ItemDaNota("item 1", 100.0))
+    ->com(new ItemDaNota("item 2", 200.0))
+    ->com(new ItemDaNota("item 3", 300.0))
+    ->comObservacoes("entregar notaFiscal pessoalmente")
+    ->naDataAtual()
+    ->constroi();
