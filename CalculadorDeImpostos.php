@@ -8,7 +8,7 @@
 
 class CalculadorDeImpostos {
 
-    public function realizaCalculo(Orcamento $orcamento, IImposto $imposto) {
+    public function realizaCalculo(Orcamento $orcamento, Imposto $imposto) {
         $valor = $imposto->calcula($orcamento);
         return $valor;
     }

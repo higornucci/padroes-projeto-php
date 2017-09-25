@@ -8,6 +8,10 @@
 
 class Ihit extends TemplateDeImpostoCondicional {
 
+    function __construct(Imposto $imposto = null){
+        parent::__construct($imposto);
+    }
+
     public function deveUsarMaximaTaxacao(Orcamento $orcamento) {
         $noOrcamento = Array();
 

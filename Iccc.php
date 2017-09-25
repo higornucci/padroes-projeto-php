@@ -6,8 +6,12 @@
  * Time: 10:06
  */
 
-class Iccc
+class Iccc extends Imposto
 {
+    function __construct(Imposto $imposto = null){
+        parent::__construct($imposto);
+    }
+
     public function calcula(Orcamento $orcamento)
     {
         if ($orcamento->getValor() < 1000) {

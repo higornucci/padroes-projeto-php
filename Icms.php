@@ -6,10 +6,14 @@
  * Time: 09:59
  */
 
-class Icms implements IImposto
+class Icms extends Imposto
 {
-    public function calcula(Orcamento $orcamento)
-    {
-        return $orcamento->getValor() * 0.1;
+
+    function __construct(Imposto $imposto = null) {
+        parent::__construct($imposto);
+    }
+
+    public function calcula(Orcamento $orcamento) {
+        return $orcamento->getValor() * 0.1 + $this->calculaOutroImposto($orcamento);
     }
 }

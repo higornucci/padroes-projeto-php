@@ -11,11 +11,11 @@ function autoload($class) {
 }
 spl_autoload_register("autoload");
 
-$orcamento = new Orcamento(500);
+$orcamento = new Orcamento(1000);
 
-$icms = new Icms();
-$iss = new Iss();
-$novoImposto = new Iccc();
+$icms = new Icms( new Iss());
+$iss = new Iss($icms);
+$novoImposto = new Iccc($iss);
 
 $calculadorDeImposto = new CalculadorDeImpostos();
 

@@ -7,6 +7,9 @@
  */
 
 class Icpp extends TemplateDeImpostoCondicional {
+    function __construct( Imposto $imposto = null){
+        parent::__construct($imposto);
+    }
 
     protected function deveUsarMaximaTaxacao(Orcamento $orcamento) {
         return $orcamento->getValor() > 500;

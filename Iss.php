@@ -6,10 +6,14 @@
  * Time: 10:00
  */
 
-class Iss implements IImposto
+class Iss extends Imposto
 {
-    public function calcula(Orcamento $orcamento)
-    {
-        return $orcamento->getValor() * 0.06;
+
+    function __construct(Imposto $outroImposto = null) {
+        parent::__construct($outroImposto);
+    }
+
+    public function calcula(Orcamento $orcamento) {
+        return $orcamento->getValor() * 0.06 + $this->calculaOutroImposto($orcamento);
     }
 }
