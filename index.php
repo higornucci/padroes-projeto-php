@@ -83,3 +83,23 @@ $notaFiscal = $builder->paraEmpresa("Caelum")
     ->comObservacoes("entregar notaFiscal pessoalmente")
     ->naDataAtual()
     ->constroi();
+
+// Memento
+
+$historico = new Historico();
+
+$contrato = new Contrato(date("d/m/Y"), "Renan", new Novo());
+$historico->adiciona($contrato->salvaEstado());
+
+$contrato->avanca();
+$historico->adiciona($contrato->salvaEstado());
+
+$contrato->avanca();
+$historico->adiciona($contrato->salvaEstado());
+
+$contrato->avanca();
+$historico->adiciona($contrato->salvaEstado());
+
+echo $contrato->getTipo();
+$contrato->restaura($historico->pega(1));
+echo $contrato->getTipo();
